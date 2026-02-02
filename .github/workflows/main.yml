@@ -1,22 +1,21 @@
 name: Build EXE
 on:
   push:
-      branches:
-            - main
-              workflow_dispatch:
-              jobs:
-                build:
-                    runs-on: windows-latest
-                        steps:
-                              - uses: actions/checkout@v4
-                                    - uses: actions/setup-python@v5
-                                            with:
-                                                      python-version: '3.11'
-                                                            - run: |
-                                                                      pip install pyinstaller psutil
-                                                                                pyinstaller --onefile --noconsole saveany_monitor.py
-                                                                                      - uses: actions/upload-artifact@v4
-                                                                                              with:
-                                                                                                        name: SaveAny-Monitor-EXE
-                                                                                                                  path: dist/*.exe
-                                                                                                                  
+      branches: [main]
+        workflow_dispatch:
+        jobs:
+          build:
+              runs-on: windows-latest
+                  steps:
+                        - uses: actions/checkout@v4
+                              - uses: actions/setup-python@v5
+                                      with:
+                                                python-version: '3.11'
+                                                      - run: |
+                                                                pip install pyinstaller psutil
+                                                                          pyinstaller --onefile --noconsole saveany_monitor.py
+                                                                                - uses: actions/upload-artifact@v4
+                                                                                        with:
+                                                                                                  name: SaveAny-Monitor-EXE
+                                                                                                            path: dist/*.exe
+                                                                                                            
